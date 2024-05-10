@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1.model
+package assessment2.model
 
 
 import androidx.room.Entity

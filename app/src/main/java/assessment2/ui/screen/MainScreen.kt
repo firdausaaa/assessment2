@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1.ui.screen
+package assessment2.ui.screen
 
 import android.content.res.Configuration
 import android.widget.Toast
@@ -48,7 +48,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.d3if3004.mobpro1.R
-import org.d3if3004.mobpro1.database.GameDb
+import assessment2.database.GameDb
 import assessment2.ui.theme.Mobpro1Theme
 import org.d3if3004.mobpro1.util.ViewModelFactory
 

@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1.navigation
+package assessment2.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -8,9 +8,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import assessment2.ui.screen.AboutScreen
-import org.d3if3004.mobpro1.ui.screen.DetailScreen
-import org.d3if3004.mobpro1.ui.screen.KEY_ID_Game
-import org.d3if3004.mobpro1.ui.screen.MainScreen
+import assessment2.ui.screen.DetailScreen
+import assessment2.ui.screen.KEY_ID_Game
+import assessment2.ui.screen.MainScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {

@@ -1,11 +1,11 @@
-package org.d3if3004.mobpro1.ui.screen
+package assessment2.ui.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.d3if3004.mobpro1.database.GameDao
-import org.d3if3004.mobpro1.model.Game
+import assessment2.database.GameDao
+import assessment2.model.Game
 
 class DetailViewModel (private val dao: GameDao): ViewModel() {
 

@@ -2,9 +2,9 @@ package org.d3if3004.mobpro1.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.d3if3004.mobpro1.database.GameDao
-import org.d3if3004.mobpro1.ui.screen.DetailViewModel
-import org.d3if3004.mobpro1.ui.screen.MainViewModel
+import assessment2.database.GameDao
+import assessment2.ui.screen.DetailViewModel
+import assessment2.ui.screen.MainViewModel
 
 
 class ViewModelFactory(private val dao: GameDao) : ViewModelProvider.Factory {

@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1.ui.screen
+package assessment2.ui.screen
 
 import android.content.res.Configuration
 import androidx.compose.material3.AlertDialog

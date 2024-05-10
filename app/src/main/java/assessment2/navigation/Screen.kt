@@ -1,6 +1,6 @@
-package org.d3if3004.mobpro1.navigation
+package assessment2.navigation
 
-import org.d3if3004.mobpro1.ui.screen.KEY_ID_Game
+import assessment2.ui.screen.KEY_ID_Game
 
 sealed class Screen (val route: String){
     data object  Home: Screen("mainScreen")

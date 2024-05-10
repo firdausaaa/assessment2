@@ -1,11 +1,11 @@
-package org.d3if3004.mobpro1.database
+package assessment2.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-import org.d3if3004.mobpro1.model.Game
+import assessment2.model.Game
 
 @Dao
 interface GameDao {
@@ -20,7 +20,7 @@ interface GameDao {
     fun getGame(): Flow<List<Game>>
 
     @Query("SELECT * FROM Game WHERE id = :id")
-    suspend fun getGameById(id: Long):Game?
+    suspend fun getGameById(id: Long): Game?
 
     @Query("DELETE FROM Game WHERE id = :id")
     suspend fun deleteById(id:Long)

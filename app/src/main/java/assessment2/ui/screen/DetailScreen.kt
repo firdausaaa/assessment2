@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1.ui.screen
+package assessment2.ui.screen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.width
@@ -22,7 +21,6 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Card
@@ -31,7 +29,6 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -62,13 +59,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.d3if3004.mobpro1.R
-import org.d3if3004.mobpro1.database.GameDb
-import org.d3if3004.mobpro1.model.Game
-import org.d3if3004.mobpro1.navigation.Screen
+import assessment2.database.GameDb
+import assessment2.model.Game
+import assessment2.navigation.Screen
 import assessment2.ui.theme.Mobpro1Theme
 import org.d3if3004.mobpro1.util.SettingsDataStore
 import org.d3if3004.mobpro1.util.ViewModelFactory
-import java.nio.channels.AsynchronousFileChannel.open
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
