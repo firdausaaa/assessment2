@@ -5,23 +5,24 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-import org.d3if3004.mobpro1.model.Mahasiswa
+import org.d3if3004.mobpro1.model.Game
 
 @Dao
-interface MahasiswaDao {
+interface GameDao {
     @Insert
-    suspend fun insert(mahasiswa: Mahasiswa)
+    suspend fun insert(Game: Game)
 
     @Update
-    suspend fun update(mahasiswa: Mahasiswa)
+    suspend fun update(Game: Game)
 
-    @Query("SELECT * FROM mahasiswa ORDER By kelas,nim ASC")
-    fun getMahasiswa(): Flow<List<Mahasiswa>>
+//    @Query("SELECT * FROM Game ORDER By kelas,nim ASC")
+    @Query("SELECT * FROM Game")
+    fun getGame(): Flow<List<Game>>
 
-    @Query("SELECT * FROM mahasiswa WHERE id = :id")
-    suspend fun getMahasiswaById(id: Long):Mahasiswa?
+    @Query("SELECT * FROM Game WHERE id = :id")
+    suspend fun getGameById(id: Long):Game?
 
-    @Query("DELETE FROM mahasiswa WHERE id = :id")
+    @Query("DELETE FROM Game WHERE id = :id")
     suspend fun deleteById(id:Long)
 
 

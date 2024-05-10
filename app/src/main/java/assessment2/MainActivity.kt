@@ -1,4 +1,4 @@
-package org.d3if3004.mobpro1
+package assessment2
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import org.d3if3004.mobpro1.navigation.SetupNavGraph
-import org.d3if3004.mobpro1.ui.theme.Mobpro1Theme
+import assessment2.ui.theme.Mobpro1Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

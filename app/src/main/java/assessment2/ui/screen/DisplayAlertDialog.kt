@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.d3if3004.mobpro1.R
-import org.d3if3004.mobpro1.ui.theme.Mobpro1Theme
+import assessment2.ui.theme.Mobpro1Theme
 
 @Composable
 fun DisplayAlertDialog(

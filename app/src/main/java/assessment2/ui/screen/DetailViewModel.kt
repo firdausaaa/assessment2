@@ -4,35 +4,35 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.d3if3004.mobpro1.database.MahasiswaDao
-import org.d3if3004.mobpro1.model.Mahasiswa
+import org.d3if3004.mobpro1.database.GameDao
+import org.d3if3004.mobpro1.model.Game
 
-class DetailViewModel (private val dao: MahasiswaDao): ViewModel() {
+class DetailViewModel (private val dao: GameDao): ViewModel() {
 
-    fun insert(nama:String, nim:String, kelas: String){
-        val mahasiswa = Mahasiswa (
+    fun insert(nama:String, catatan:String, kategori: String){
+        val Game = Game (
             nama = nama,
-            nim = nim,
-            kelas = kelas
+            catatan = catatan,
+            kategori = kategori
         )
         viewModelScope.launch (Dispatchers.IO){
-            dao.insert(mahasiswa)
+            dao.insert(Game)
         }
     }
 
-    suspend fun getMahasiswa(id:Long): Mahasiswa?{
-        return dao.getMahasiswaById(id)
+    suspend fun getGame(id:Long): Game?{
+        return dao.getGameById(id)
     }
 
-    fun  update(id: Long, nama: String,nim: String,kelas: String){
-        val mahasiswa = Mahasiswa(
+    fun  update(id: Long, nama: String,catatan: String,kategori: String){
+        val Game = Game(
             id = id,
             nama = nama,
-            nim = nim,
-            kelas = kelas
+            catatan = catatan,
+            kategori = kategori
         )
         viewModelScope.launch (Dispatchers.IO){
-            dao.update(mahasiswa)
+            dao.update(Game)
         }
 
     }

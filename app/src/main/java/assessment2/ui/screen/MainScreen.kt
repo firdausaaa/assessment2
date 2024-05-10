@@ -42,49 +42,48 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.d3if3004.mobpro1.R
-import org.d3if3004.mobpro1.database.MahasiswaDb
-import org.d3if3004.mobpro1.ui.theme.Mobpro1Theme
+import org.d3if3004.mobpro1.database.GameDb
+import assessment2.ui.theme.Mobpro1Theme
 import org.d3if3004.mobpro1.util.ViewModelFactory
 
-const val KEY_ID_MAHASISWA = "idMahasiswa"
+const val KEY_ID_Game = "idGame"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(navController: NavHostController,id: Long?= null) {
     val context = LocalContext.current
-    val db = MahasiswaDb.getInstance(context)
+    val db = GameDb.getInstance(context)
     val factory = ViewModelFactory(db.dao)
     val viewModel: DetailViewModel = viewModel(factory = factory)
 
     var nama by remember { mutableStateOf("") }
-    var nim by remember { mutableStateOf("") }
+    var catatan by remember { mutableStateOf("") }
 
     var showDialog by remember { mutableStateOf(false) }
 
 
     val radioOptions = listOf(
-        stringResource(id = R.string.d3if4601),
-        stringResource(id = R.string.d3if4602),
-        stringResource(id = R.string.d3if4603),
-        stringResource(id = R.string.d3if4604),
-        stringResource(id = R.string.d3if4605)
+        stringResource(id = R.string.bintang_1),
+        stringResource(id = R.string.bintang_2),
+        stringResource(id = R.string.bintang_3),
+        stringResource(id = R.string.bintang_4),
+        stringResource(id = R.string.bintang_5)
     )
 
-    var selectedKelas by rememberSaveable { mutableStateOf(radioOptions[0]) }
+    var selectedKategori by rememberSaveable { mutableStateOf(radioOptions[0]) }
 
     LaunchedEffect(true) {
         if (id == null) return@LaunchedEffect
-        val data = viewModel.getMahasiswa(id) ?: return@LaunchedEffect
+        val data = viewModel.getGame(id) ?: return@LaunchedEffect
         nama = data.nama
-        nim = data.nim
-        selectedKelas = data.kelas
+        catatan = data.catatan
+        selectedKategori = data.kategori
     }
     Scaffold (
         topBar = {
@@ -100,9 +99,9 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                 },
                 title = {
                     if (id == null)
-                        Text(text = stringResource(id = R.string.tambah_mahasiswa))
+                        Text(text = stringResource(id = R.string.tambah_game))
                     else
-                        Text(text = stringResource(id = R.string.edit_mahasiswa))
+                        Text(text = stringResource(id = R.string.edit_game))
 
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
@@ -111,14 +110,14 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                 ),
                 actions = {
                     IconButton(onClick = {
-                        if (nama =="" || nim == "" ){
+                        if (nama =="" || catatan == "" ){
                             Toast.makeText(context,R.string.invalid, Toast.LENGTH_LONG).show()
                             return@IconButton
                         }
                         if (id == null){
-                            viewModel.insert(nama,nim, selectedKelas)
+                            viewModel.insert(nama,catatan, selectedKategori)
                         } else{
-                            viewModel.update(id,nama,nim, selectedKelas)
+                            viewModel.update(id,nama,catatan, selectedKategori)
                         }
                         navController.popBackStack()
                     }) {
@@ -143,13 +142,13 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
             )
         }
     ) { padding ->
-        FormMahasiswa(
+        FormGame(
             title = nama,
             onTitleChange = {nama = it} ,
-            desc = nim,
-            onDescChange = {nim = it},
-            pilihanKelas = selectedKelas,
-            kelasBerubah = {selectedKelas = it},
+            desc = catatan,
+            onDescChange = {catatan = it},
+            pilihanKelas = selectedKategori,
+            kelasBerubah = {selectedKategori = it},
             radioOpsi = radioOptions,
             modifier = Modifier.padding(padding)
         )
@@ -182,7 +181,7 @@ fun DeleteAction(delete:()->Unit ){
 }
 
 @Composable
-fun FormMahasiswa(
+fun FormGame(
 
     title:String,onTitleChange:(String)-> Unit,
     desc:String,onDescChange:(String)->Unit,
@@ -199,7 +198,7 @@ fun FormMahasiswa(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        //nama mahasiswa
+        //nama Game
         OutlinedTextField(
             value = title,
             onValueChange = {onTitleChange(it)},
@@ -211,15 +210,15 @@ fun FormMahasiswa(
             ),
             modifier=Modifier.fillMaxWidth()
         )
-        //nim mahasiswa
+        //nim Game
         OutlinedTextField(
             value = desc,
             onValueChange = {onDescChange(it)},
             singleLine = true,
-            label = { Text(text = stringResource(id = R.string.nim))},
+            label = { Text(text = stringResource(id = R.string.isi_catatan))},
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
+                capitalization = KeyboardCapitalization.Words,
+                imeAction = ImeAction.Next
             ),
             modifier=Modifier.fillMaxWidth()
         )

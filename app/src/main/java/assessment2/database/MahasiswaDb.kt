@@ -4,26 +4,26 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import org.d3if3004.mobpro1.model.Mahasiswa
+import org.d3if3004.mobpro1.model.Game
 
-@Database(entities = [Mahasiswa::class], version = 1, exportSchema = false)
-abstract class MahasiswaDb:RoomDatabase() {
+@Database(entities = [Game::class], version = 1, exportSchema = false)
+abstract class GameDb:RoomDatabase() {
 
-    abstract val dao:MahasiswaDao
+    abstract val dao:GameDao
 
     companion object{
         @Volatile
-        private var INSTANCE: MahasiswaDb? = null
+        private var INSTANCE: GameDb? = null
 
-        fun getInstance(context: Context):MahasiswaDb{
+        fun getInstance(context: Context):GameDb{
             synchronized(this){
                 var instance = INSTANCE
 
                 if (instance == null){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        MahasiswaDb::class.java,
-                        "mahasiswa.db"
+                        GameDb::class.java,
+                        "Game.db"
                     ).build()
                     INSTANCE = instance
                 }

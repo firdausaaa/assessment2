@@ -2,12 +2,12 @@ package org.d3if3004.mobpro1.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.d3if3004.mobpro1.database.MahasiswaDao
+import org.d3if3004.mobpro1.database.GameDao
 import org.d3if3004.mobpro1.ui.screen.DetailViewModel
 import org.d3if3004.mobpro1.ui.screen.MainViewModel
 
 
-class ViewModelFactory(private val dao: MahasiswaDao) : ViewModelProvider.Factory {
+class ViewModelFactory(private val dao: GameDao) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
