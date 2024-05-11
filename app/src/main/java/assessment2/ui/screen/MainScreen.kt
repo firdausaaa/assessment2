@@ -47,9 +47,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import org.d3if3004.mobpro1.R
 import assessment2.database.GameDb
 import assessment2.ui.theme.Mobpro1Theme
+import org.d3if3004.mobpro1.R
 import org.d3if3004.mobpro1.util.ViewModelFactory
 
 const val KEY_ID_Game = "idGame"
@@ -76,14 +76,14 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
         stringResource(id = R.string.bintang_5)
     )
 
-    var selectedKategori by rememberSaveable { mutableStateOf(radioOptions[0]) }
+    var selectedkategori by rememberSaveable { mutableStateOf(radioOptions[0]) }
 
     LaunchedEffect(true) {
         if (id == null) return@LaunchedEffect
         val data = viewModel.getGame(id) ?: return@LaunchedEffect
         nama = data.nama
         catatan = data.catatan
-        selectedKategori = data.kategori
+        selectedkategori = data.kategori
     }
     Scaffold (
         topBar = {
@@ -93,7 +93,7 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = stringResource(id = R.string.kembali),
-                            tint = MaterialTheme.colorScheme.primary
+                            tint = Color.White
                         )
                     }
                 },
@@ -106,7 +106,7 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.primary,// Tetap menggunakan warna primer untuk konten judul
                 ),
                 actions = {
                     IconButton(onClick = {
@@ -115,16 +115,16 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                             return@IconButton
                         }
                         if (id == null){
-                            viewModel.insert(nama,catatan, selectedKategori)
+                            viewModel.insert(nama,catatan, selectedkategori)
                         } else{
-                            viewModel.update(id,nama,catatan, selectedKategori)
+                            viewModel.update(id,nama,catatan, selectedkategori)
                         }
                         navController.popBackStack()
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Check,
                             contentDescription = stringResource(id = R.string.simpan),
-                            tint = MaterialTheme.colorScheme.primary
+                            tint = Color.White
                         )
                     }
                     if (id != null){
@@ -147,8 +147,8 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
             onTitleChange = {nama = it} ,
             desc = catatan,
             onDescChange = {catatan = it},
-            pilihanKelas = selectedKategori,
-            kelasBerubah = {selectedKategori = it},
+            pilihanKelas = selectedkategori,
+            kelasBerubah = {selectedkategori = it},
             radioOpsi = radioOptions,
             modifier = Modifier.padding(padding)
         )

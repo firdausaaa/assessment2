@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Mobpro1Theme {
-                // A surface container using the 'background' color from the theme
+                // A Gamece container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -26,3 +26,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+

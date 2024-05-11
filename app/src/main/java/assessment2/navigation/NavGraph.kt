@@ -11,6 +11,7 @@ import assessment2.ui.screen.AboutScreen
 import assessment2.ui.screen.DetailScreen
 import assessment2.ui.screen.KEY_ID_Game
 import assessment2.ui.screen.MainScreen
+import assessment2.ui.screen.ProfileScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
@@ -24,8 +25,11 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         composable(route = Screen.FormBaru.route){
             DetailScreen(navController)
         }
-        composable(route = Screen.About.route){
+        composable(route = Screen.About.route) {
             AboutScreen(navController)
+        }
+        composable(route = Screen.Profile.route){
+            ProfileScreen(navController)
         }
         composable(
             route = Screen.FormUbah.route,

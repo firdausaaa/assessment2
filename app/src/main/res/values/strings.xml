@@ -24,7 +24,8 @@
     <string name="list">Tampilan list</string>
     <string name="grid">Tampilan grid</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="profil_pengguna">Profil Pengguna</string>
     <string name="isi_catatan">Isi Deskripsi</string>
-    <string name="pengaturan">Pengaturan Aplikasi</string>
-    <string name="copyright">Hitung BMI merupakan sebuah aplikasi Android untuk menghitung body mass index (BMI) sehingga seseorang dapat mengetahui apakah berat badannya ideal, gemuk atau kurus.\n\nAplikasi ini dibuat untuk kelas Mobpro 1.\n\nCopyright © 2024 Firdaus Akbar Amrullah.\nAll rights reserved.</string>
+    <string name="dukungan">Dukungan Aplikasi</string>
+    <string name="copyright">Game Review merupakan sebuah aplikasi Android untuk memberikan review pengguna mengenai pengalamannya setelah memainkan sebuah game sehingga seseorang dapat mengetahui apakah pengguna tersebut menyukai atau tidak sebuah game tersebut.\n\nCopyright © 2024 Firdaus Akbar Amrullah.\nAll rights reserved.</string>
 </resources>

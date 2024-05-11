@@ -16,7 +16,7 @@ interface GameDao {
     suspend fun update(Game: Game)
 
 //    @Query("SELECT * FROM Game ORDER By kelas,nim ASC")
-    @Query("SELECT * FROM Game")
+    @Query("SELECT * FROM Game ORDER By nama,kategori ASC")
     fun getGame(): Flow<List<Game>>
 
     @Query("SELECT * FROM Game WHERE id = :id")

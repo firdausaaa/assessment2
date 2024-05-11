@@ -1,6 +1,7 @@
 package assessment2.ui.screen
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,8 +23,9 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -37,6 +40,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -45,6 +49,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -55,14 +60,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.d3if3004.mobpro1.R
 import assessment2.database.GameDb
 import assessment2.model.Game
 import assessment2.navigation.Screen
 import assessment2.ui.theme.Mobpro1Theme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.d3if3004.mobpro1.R
 import org.d3if3004.mobpro1.util.SettingsDataStore
 import org.d3if3004.mobpro1.util.ViewModelFactory
 
@@ -85,9 +90,9 @@ fun MainScreen(navController: NavHostController) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = stringResource(id = R.string.tentang_aplikasi),
-                            tint = MaterialTheme.colorScheme.primary
-                        )
+                            tint = Color.White)
                     }
+
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = stringResource(id = R.string.tentang_aplikasi),
@@ -95,20 +100,22 @@ fun MainScreen(navController: NavHostController) {
                 }
 
 
-                Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth()) {
+                Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp).fillMaxWidth()) {
                     IconButton(onClick = {
+                        navController.navigate(Screen.Profile.route)
                     }) {
                         Icon(
-                            imageVector = Icons.Outlined.Settings,
-                            contentDescription = stringResource(id = R.string.pengaturan),
-                            tint = MaterialTheme.colorScheme.primary
-                        )
+                            imageVector = Icons.Outlined.Person,
+                            contentDescription = stringResource(id = R.string.profil_pengguna),
+                            tint = Color.White)
                     }
-                    Spacer(modifier = Modifier.width(8.dp)) // Sesuaikan jarak
+
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = stringResource(id = R.string.pengaturan),
+                        text = stringResource(id = R.string.profil_pengguna),
                     )
                 }
+
             }
         },
 
@@ -119,12 +126,15 @@ fun MainScreen(navController: NavHostController) {
         Scaffold(
             topBar = {
                 TopAppBar(title = {
-                    Text(text = (stringResource(id = R.string.app_name)))
+                    Text(
+                        text = stringResource(id = R.string.app_name),
+                        color = Color.White) // Mengatur warna teks menjadi putih
                 },
                     colors = TopAppBarDefaults.mediumTopAppBarColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
+
                     actions = {
                         IconButton(onClick = {
                             CoroutineScope(Dispatchers.IO).launch {
@@ -140,7 +150,7 @@ fun MainScreen(navController: NavHostController) {
                                     if (showList) R.string.grid
                                     else R.string.list
                                 ),
-                                tint = MaterialTheme.colorScheme.primary
+                                tint = Color.White
                             )
                         }
                     }
@@ -159,7 +169,10 @@ fun MainScreen(navController: NavHostController) {
                                     if (isClosed) open() else close()
                                 }
                             }
-                        }
+                        },
+                        Modifier.background(color = MaterialTheme.colorScheme.primaryContainer),
+
+
                     )
                     Spacer(modifier = Modifier.width(16.dp)) // Add spacing between FABs
 
@@ -168,10 +181,12 @@ fun MainScreen(navController: NavHostController) {
                         icon = { Icon(Icons.Filled.Add, contentDescription = "Add something") }, // Use appropriate icon
                         onClick = {
                             navController.navigate(Screen.FormBaru.route)
-                        }
+                        },
+                        Modifier.background(color = MaterialTheme.colorScheme.primaryContainer),
                     )
                 }
             }
+
 
 
         ) { padding ->
@@ -198,6 +213,12 @@ fun ScreenContent(showList: Boolean, modifier: Modifier, navController: NavHostC
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Icon(
+                painter = painterResource(R.drawable.baseline_hourglass_empty_24),
+                contentDescription = stringResource(id = R.string.tentang_aplikasi),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(100.dp)
+            )
             Text(
                 text = stringResource(id = R.string.list_kosong)
             )
@@ -293,10 +314,7 @@ fun GridItem(Game: Game, onClick: () -> Unit) {
         }
  Divider()
     }
-}
-
-
-@Preview(showBackground = true)
+}@Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun ScreenPreview(){
